@@ -32,11 +32,7 @@ class FlaskMustache(object):
         """Decorator for a pystache error View"""
 
         if return_code is None:
-            if type(code_or_exception) is int:
-                return_code = code_or_exception
-            else:
-                return_code = 500
-
+            return_code = code_or_exception if type(code_or_exception) is int else 500
         def class_wrapper(c):
 
             def _render(err, **kwargs):
